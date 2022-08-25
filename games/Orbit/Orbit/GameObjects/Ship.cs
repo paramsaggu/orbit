@@ -4,9 +4,9 @@ namespace Orbit.GameObjects;
 
 public class Ship : GameObject
 {
-    readonly Microsoft.Maui.Graphics.IImage slowDownImage;
-    readonly Microsoft.Maui.Graphics.IImage speedUpImage;
-    readonly Microsoft.Maui.Graphics.IImage image;
+    readonly Lazy<Microsoft.Maui.Graphics.IImage> slowDownImage;
+    readonly Lazy<Microsoft.Maui.Graphics.IImage> speedUpImage;
+    readonly Lazy<Microsoft.Maui.Graphics.IImage> image;
     private readonly IGameSceneManager gameSceneManager;
     private float batteryMaximum = 100f;
     private float batteryLevel = 100f;
@@ -81,9 +81,9 @@ public class Ship : GameObject
 
     private Microsoft.Maui.Graphics.IImage GetImage(TouchMode touchMode) => touchMode switch
     {
-        TouchMode.SlowDown => slowDownImage,
-        TouchMode.SpeedUp => speedUpImage,
-        _ => image
+        TouchMode.SlowDown => slowDownImage.Value,
+        TouchMode.SpeedUp => speedUpImage.Value,
+        _ => image.Value
     };
 
     private static float GetIncrement(TouchMode touchMode) => touchMode switch

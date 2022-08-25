@@ -4,7 +4,7 @@ namespace Orbit.GameObjects;
 
 public class Sun : GameObject
 {
-    Microsoft.Maui.Graphics.IImage image;
+    Lazy<Microsoft.Maui.Graphics.IImage> image;
 
     public Sun()
     {
@@ -19,6 +19,6 @@ public class Sun : GameObject
 
         var halfWidth = size / 2;
         var halfHeight = size / 2;
-        canvas.DrawImage(image, -halfWidth, -halfHeight, size, size);
+        canvas.DrawImage(image.Value, -halfWidth, -halfHeight, size, size);
     }
 }

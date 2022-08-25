@@ -24,9 +24,8 @@ public partial class MainPage : ContentPage
         this.mainScene = mainScene;
 
         this.gameSceneManager = gameSceneManager;
-        
+
         gameSceneManager.StateChanged += GameSceneManager_StateChanged;
-        gameSceneManager.LoadScene(homeScene, GameView);
     }
 
     private void GameSceneManager_StateChanged(object sender, GameStateChangedEventArgs e)
@@ -108,5 +107,10 @@ public partial class MainPage : ContentPage
     void Switch_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
     {
         ShowBounds = e.Value;
+    }
+
+    private void GameView_Loaded(object sender, EventArgs e)
+    {
+        gameSceneManager.LoadScene(homeScene, (GameSceneView)sender);
     }
 }

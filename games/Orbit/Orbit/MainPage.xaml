@@ -13,7 +13,8 @@
         <engine:GameSceneView
             x:Name="GameView"
             StartInteraction="GameView_StartInteraction"
-            EndInteraction="GameView_EndInteraction" />
+            EndInteraction="GameView_EndInteraction"
+            Loaded="GameView_Loaded"/>
 
         <Image
             WidthRequest="60"

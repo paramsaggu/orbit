@@ -5,7 +5,7 @@ namespace Orbit.GameObjects;
 public class Asteroid : GameObject
 {
     private readonly IGameSceneManager gameSceneManager;
-    Microsoft.Maui.Graphics.IImage image;
+    Lazy<Microsoft.Maui.Graphics.IImage> image;
     float x;
     float y;
     Movement movement;
@@ -49,7 +49,7 @@ public class Asteroid : GameObject
             size * 2,
             size * 2);
 
-        canvas.DrawImage(image, Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height);
+        canvas.DrawImage(image.Value, Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height);
 
         if (MainPage.ShowBounds)
         {

@@ -4,7 +4,7 @@ namespace Orbit.GameObjects;
 
 public class Planet : GameObject
 {
-    Microsoft.Maui.Graphics.IImage image;
+    Lazy<Microsoft.Maui.Graphics.IImage> image;
     float angle = 0;
     const float rotationIncrement = -0.25f;
     private readonly IGameSceneManager gameSceneManager;
@@ -39,7 +39,7 @@ public class Planet : GameObject
             size * 2,
             size * 2);
 
-        canvas.DrawImage(image, Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height);
+        canvas.DrawImage(image.Value, Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height);
 
         if (MainPage.ShowBounds)
         {

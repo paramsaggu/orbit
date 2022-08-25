@@ -18,7 +18,9 @@ public abstract class GameObject : GameObjectContainer, IGameObject, IDrawable
 
     public virtual bool IsCollisionDetectionEnabled { get; }
 
-    protected Microsoft.Maui.Graphics.IImage LoadImage(string imageName)
+    protected Lazy<Microsoft.Maui.Graphics.IImage> LoadImage(string imageName) => new(() => LoadImageInternal(imageName));
+
+    Microsoft.Maui.Graphics.IImage LoadImageInternal(string imageName)
     {
         var assembly = GetType().GetTypeInfo().Assembly;
 
